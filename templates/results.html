@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f7f9fc;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h2 {
+            color: #333;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #e8f0fe;
+        }
+        .risk {
+            font-size: 20px;
+            margin-top: 10px;
+        }
+        a {
+            display: inline-block;
+            margin-top: 30px;
+            background: #0077ff;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+        }
+        a:hover {
+            background: #005ec2;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Hi {{ name }}!</h2>
+    <p>Here are your mental health scores:</p>
+
+    <div class="result">
+        <p>Depression Risk: <strong>{{ results["Depression"] }}</strong></p>
+        <p>Anxiety Risk: <strong>{{ results["Anxiety"] }}</strong></p>
+        <p>Stress Risk: <strong>{{ results["Stress"] }}</strong></p>
+    </div>
+
+    <a href="/">Back to Home</a>
+</div>
+</body>
+</html>

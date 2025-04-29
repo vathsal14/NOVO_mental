@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mental Health Questionnaire</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f7f9fc;
+        }
+        .container {
+            max-width: 700px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+        }
+        input, select {
+            padding: 10px;
+            margin: 10px 0;
+            width: 100%;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #0077ff;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #005ec2;
+        }
+        .question {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Mental Health Assessment</h2>
+    <form method="POST">
+        <label for="name">Name:</label>
+        <input type="text" name="name" required>
+
+        <label for="gender">Gender:</label>
+        <select name="gender" required>
+            <option value="">Select...</option>
+            <option value="Boy">Boy</option>
+            <option value="Girl">Girl</option>
+        </select>
+
+        {% for idx, (question, _) in enumerate(questions_common) %}
+        <div class="question">
+            <p>{{ idx+1 }}. {{ question }}</p>
+            <select name="q_{{ idx }}" required>
+                <option value="">Choose your response</option>
+                <option value="0">Strongly Agree</option>
+                <option value="1">Agree</option>
+                <option value="2">Somewhat Agree</option>
+                <option value="3">Neutral</option>
+                <option value="4">Somewhat Disagree</option>
+                <option value="5">Disagree</option>
+                <option value="6">Strongly Disagree</option>
+            </select>
+        </div>
+        {% endfor %}
+
+        {% for idx, (question, _) in enumerate(questions_specific) %}
+        <div class="question">
+            <p>{{ idx+len(questions_common)+1 }}. {{ question }}</p>
+            <select name="q_{{ idx+len(questions_common) }}" required>
+                <option value="">Choose your response</option>
+                <option value="0">Strongly Agree</option>
+                <option value="1">Agree</option>
+                <option value="2">Somewhat Agree</option>
+                <option value="3">Neutral</option>
+                <option value="4">Somewhat Disagree</option>
+                <option value="5">Disagree</option>
+                <option value="6">Strongly Disagree</option>
+            </select>
+        </div>
+        {% endfor %}
+
+        <button type="submit">Submit</button>
+    </form>
+</div>
+</body>
+</html>
